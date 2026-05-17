@@ -21,7 +21,7 @@ int read_input_i(char *input, int *input_i)
     i = 0;
     while (i < 16)
     {
-        if (input_i[i] ==0 )
+        if (input_i[i] == 0 )
         {
             return 0;
         }
