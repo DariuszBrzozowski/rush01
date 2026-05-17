@@ -12,7 +12,7 @@ int read_input_i(char *input, int *input_i)
     }
 
     i = 0;
-    while (input != '\0')
+    while (*input != '\0')
     {
         input_i[i] = input[2 * i] + '0';
     }

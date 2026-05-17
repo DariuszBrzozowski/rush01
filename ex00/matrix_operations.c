@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 void init_matrix_with_zeros(int matrix[4][4])
 {
     int i;
@@ -31,7 +33,7 @@ void print_matrix(int matrix[4][4])
             c = matrix[i][j] + '0';
             write(1, &c, 1);
             if (j < 3)
-                write(1, ' ', 1);
+                write(1, " ", 1);
             j++;
         }
         if (i < 3)
