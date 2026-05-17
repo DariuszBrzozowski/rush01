@@ -40,6 +40,6 @@ void split_input_i(int input_i[16], int *ctop, int *cbottom, int *rleft, int *rr
         cbottom[i] = input_i[i+4];
         rleft[i] = input_i[i+8];
         rright[i] = input_i[i+12];
-        i++;;
+        i++;
     }
 }
