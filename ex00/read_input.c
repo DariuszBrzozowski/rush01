@@ -1,16 +1,5 @@
-#include <unistd.h>
+/*#include <unistd.h>*/
 
-int read_input(char *input, char *top, char *bottom, char *left, char *right)
-{
-    int i;
-    int temp[16];
-
-    i = 0;
-    while (input != '\0')
-    {
-        temp[i] = input[2 * i] + '0';
-    }
-}
 
 int read_input_i(char *input, int *input_i)
 {
@@ -39,7 +28,7 @@ int read_input_i(char *input, int *input_i)
 
     return (1);
 }
-void split_input_i( int input_i[16], int *ctop, int *cbottom, int *rleft, int *rright){
+void split_input_i(int input_i[16], int *ctop, int *cbottom, int *rleft, int *rright){
     int i;
 
     i = 0;
