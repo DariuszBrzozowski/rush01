@@ -6,17 +6,20 @@ int check_top_input(int matrix[4][4], int ctop[4])
     int i;
     int j;
     int cnt;
+    int max_before;
 
     j = 0;
     while (j < 4)
     {
-        cnt = 0;
+        cnt = 1;
         i = 0;
+        max_before = matrix[i][j];
         while (i < 3)
         {
-            if (matrix[i][j] < matrix[i+1][j])
+            if (max_before < matrix[i+1][j])
             {
                 cnt++;
+                max_before = matrix[i+1][j];
             }
             i++;
         }
@@ -33,17 +36,20 @@ int check_bottom_input(int matrix[4][4], int cbottom[4])
     int i;
     int j;
     int cnt;
+    int max_before;
 
     j = 0;
     while (j < 4)
     {
-        cnt = 0;
+        cnt = 1;
         i = 3;
+        max_before = matrix[i][j];
         while (i > 0)
         {
-            if (matrix[i][j] < matrix[i-1][j])
+            if (max_before < matrix[i-1][j])
             {
                 cnt++;
+                max_before = matrix[i-1][j];
             }
             i--;
         }
@@ -60,22 +66,25 @@ int check_left_input(int matrix[4][4], int rleft[4])
     int i;
     int j;
     int cnt;
+    int max_before;
 
     i = 0;
     while (i < 4)
     {
-        cnt = 0;
+        cnt = 1;
         j = 0;
+        max_before = matrix[i][j];
         while (j < 3)
         {
-            if (matrix[i][j] < matrix[i][j+1])
+            if (max_before  < matrix[i][j+1])
             {
                 cnt++;
+                max_before =  matrix[i][j+1];
             }
             j++;
         }
 
-        if (cnt != rleft[j])
+        if (cnt != rleft[i])
             return (0);
         i++;
     }
@@ -87,22 +96,24 @@ int check_right_input(int matrix[4][4], int rright[4])
     int i;
     int j;
     int cnt;
-
+    int max_before;
     i = 0;
     while (i < 4)
     {
-        cnt = 0;
+        cnt = 1;
         j = 3;
+        max_before = matrix[i][j];
         while (j >= 1)
         {
-            if (matrix[i][j] < matrix[i][j-1])
+            if (max_before < matrix[i][j-1])
             {
                 cnt++;
+                max_before = matrix[i][j-1];
             }
             j--;
         }
 
-        if (cnt != rright[j])
+        if (cnt != rright[i])
             return (0);
         i++;
     }
@@ -196,9 +207,9 @@ int find_solution(int matrix[4][4], int input_i[16])
 			if (matrix[row][col] >= 1 && matrix[row][col] <= 4)
 				counts[matrix[row][col]]++;
 			matrix[row][col] = 0;
-			while (num <= 4 && counts[num] == 0)
+			while (num <= 4 && (counts[num] == 0 || (!cell_avail_for_num(matrix, row, col, num))))
 				num++;
-			if (num <= 4 && cell_avail_for_num(matrix, row, col, num))
+			if (num <= 4 )
 			{
 				matrix[row][col] = num;
 				counts[num]--;

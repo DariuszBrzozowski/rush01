@@ -7,9 +7,9 @@ void init_matrix_with_zeros(int matrix[4][4])
     
 
     i = 0;
-    j = 0;
 
     while (i < 4){
+        j = 0;
         while (j < 4)
         {
             matrix[i][j] = 0;
@@ -26,8 +26,9 @@ void print_matrix(int matrix[4][4])
     char c;
 
     i = 0;
-    j = 0;
+
     while (i < 4){
+        j = 0;
         while (j < 4)
         {
             c = matrix[i][j] + '0';
